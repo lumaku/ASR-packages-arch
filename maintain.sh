@@ -61,12 +61,13 @@ cmd_usage() {
         Modes
             init        Only run this the first time
             pull        check for changes in remotes
-            rebuild     rebuild
+            rebuild     (re)build all packages
             commit      commit changes
             push        push changes
             full        pull + rebuild + commit + push
             clean       clean all
             print       print package list with badges
+            show        show changes
 	_EOF
     exit 1
 }
@@ -151,6 +152,7 @@ show_changes(){
         cd ${BUILDDIR}/${remote}
         echo " + ${remote}:"
         git status --porcelain -uno
+        git diff -G"pkgver =" --word-diff --unified=0 --no-commit-id --color=always | grep --color=never pkgver || true
         cd ${BASEDIR}
     done
 }
@@ -211,7 +213,7 @@ elif [[ $1 == "pull" ]]; then
 elif [[ $1 == "push" ]]; then
     push
 elif [[ $1 == "rebuild" ]]; then
-    testing
+    rebuild
 elif [[ $1 == "commit" ]]; then
     commit
 elif [[ $1 == "clean" ]]; then
