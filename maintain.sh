@@ -16,8 +16,14 @@ packages="${packages} python-pytorch-wpe-git"
 packages="${packages} python-sentencepiece-git"
 packages="${packages} python-espnet-model-zoo-git"
 packages="${packages} python-espnet-tts-frontend-git"
+packages="${packages} python-jamo-git"
 # k2
 packages="${packages} python-k2-git"
+packages="${packages} python-lhotse-git"
+packages="${packages} python-lilcom-git"
+packages="${packages} python-kaldilm-git"
+packages="${packages} python-kaldialign-git"
+packages="${packages} python-icefall-git"
 # s3prl
 #packages="${packages} python-s3prl-git"
 packages="${packages} python-normalise-git"
@@ -26,11 +32,6 @@ packages="${packages} python-dtw-python-git"
 packages="${packages} python-hyperpyyaml-git"
 packages="${packages} python-huggingface-hub-git"
 packages="${packages} python-speechbrain-git"
-
-
-# löchen
-# packages="${packages} python-richenum-git"
-# packages="${packages} python-normalize-git"
 
 
 # Remotes with HTTPS: https://aur.archlinux.org/${remote}.git
@@ -45,6 +46,8 @@ BUILDDIR="${BASEDIR}/build"
 BASEDIR=$(realpath ${BASEDIR})
 BUILDDIR=$(realpath ${BUILDDIR})
 
+# set language to English for error messages
+LANG=C
 
 
 cmd_usage() {
